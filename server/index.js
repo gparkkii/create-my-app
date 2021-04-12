@@ -1,5 +1,13 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
+const config = require('./config/key');
+const authRouter = require('./routes/api/auth');
+const uploadRouter = require('./routes/api/upload');
+const signupRouter = require('./routes/user/signup');
+const loginRouter = require('./routes/user/login');
+const logoutRouter = require('./routes/user/logout');
 const app = express();
 
 mongoose.connect( config.mongoURI, 
@@ -9,12 +17,27 @@ mongoose.connect( config.mongoURI,
     useCreateIndex: true,
     useFindAndModify: false,
   }
-).then(() => console.log("MongoDB connected..."))
+).then(() => console.log("CMA-MongoDB connected..."))
 .catch(err => console.log(err));
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-})
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cookieParser());
+
+
+//=================================
+//             Routes
+//=================================
+
+//============ USER ==============//
+app.use('/signup', signupRouter);
+app.use('/login', loginRouter);
+app.use('/logout', logoutRouter);
+
+//============= API ==============//
+app.use('/api/auth', authRouter);
+app.use('/api/uploads', uploadRouter);
+app.use('/uploads', express.static('uploads'))
 
 const port = 5000;
 
