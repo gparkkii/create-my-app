@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import loadable from '@loadable/component';
-import AppLayout from 'components/common/AppLayout';
 import axios from 'axios';
+import ThemeLayout from 'components/common/ThemeLayout';
 
 const Main = loadable(() => import('pages/Main.js'));
 
@@ -17,13 +17,13 @@ console.log('env :', process.env.NODE_ENV);
 function App() {
   return (
     <Router>
-      <AppLayout>
+      <ThemeLayout>
         <Suspense fallback={<div>...loading</div>}>
           <Switch>
             <Route exact path="/" component={Main} />
           </Switch>
         </Suspense>
-      </AppLayout>
+      </ThemeLayout>
     </Router>
   );
 }

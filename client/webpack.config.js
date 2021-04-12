@@ -20,6 +20,7 @@ const config = {
     extensions: ['.js', '.jsx', '.json', 'css'],
     alias: {
       components: path.resolve(__dirname, 'src/components'),
+      context: path.resolve(__dirname, 'src/context'),
       pages: path.resolve(__dirname, 'src/pages'),
       styles: path.resolve(__dirname, 'src/styles'),
       assets: path.resolve(__dirname, 'src/assets'),
@@ -39,12 +40,12 @@ const config = {
           env: {
             development: {
               plugins: [
-                ['@emotion', { sourceMap: true }],
+                ['styled-components', { sourceMap: true }],
                 require.resolve('react-refresh/babel'),
               ],
             },
             production: {
-              plugins: ['@emotion'],
+              plugins: ['styled-components'],
             },
           },
           plugins: [

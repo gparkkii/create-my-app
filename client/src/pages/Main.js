@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { FlexContainer } from 'styles/container/styles';
 import { spinReverse, spin } from 'styles/keyframes';
 import ReactIcon from 'assets/react.png';
@@ -11,13 +11,13 @@ const Main = () => {
       <MainTitle>
         <ReactImg src={ReactIcon} alt="webpack" />
         <WebpackImg src={WebpackIcon} alt="react" />
-        <br /> Webpack으로 React.js 빌드하기
+        <br /> Create My App
         <a
           href="https://github.com/gparkkii/react_webpack_template"
           target="_blank"
           rel="noreferrer noopener"
         >
-          <p>© gparkkii : build react with webpack</p>
+          <p>© gparkkii : CMA boilerplate creater by gparkkii</p>
         </a>
       </MainTitle>
     </FlexContainer>
@@ -28,7 +28,7 @@ export default Main;
 
 const MainTitle = styled.h2`
   font-size: 56px;
-  font-weight: 500;
+  font-weight: 600;
   text-align: center;
   & p {
     margin-top: 30px;

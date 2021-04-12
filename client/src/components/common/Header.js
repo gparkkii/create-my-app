@@ -1,14 +1,19 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
+import { useTheme } from 'context/themeProvider';
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
+  const [ThemeMode, toggleTheme] = useTheme();
   return (
     <StyledHeader>
       <nav>
         <h2>👩🏼‍💻</h2>
         gparkkii
       </nav>
-      <nav>---</nav>
+      <nav>
+        <ThemeToggle toggle={toggleTheme} mode={ThemeMode} />
+      </nav>
     </StyledHeader>
   );
 };
