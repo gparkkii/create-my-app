@@ -13,7 +13,7 @@ const Main = () => {
         <WebpackImg src={WebpackIcon} alt="react" />
         <br /> Create My App
         <a
-          href="https://github.com/gparkkii/react_webpack_template"
+          href="https://github.com/gparkkii/create-my-app"
           target="_blank"
           rel="noreferrer noopener"
         >
