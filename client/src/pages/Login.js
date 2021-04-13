@@ -1,12 +1,15 @@
 import React from 'react';
 import { FlexContainer } from 'styles/container/styles';
 import Content from 'components/LogIn/Content';
+import AppLayout from 'components/common/AppLayout';
 
 const Login = () => {
   return (
-    <FlexContainer>
-      <Content />
-    </FlexContainer>
+    <AppLayout>
+      <FlexContainer>
+        <Content />
+      </FlexContainer>
+    </AppLayout>
   );
 };
 

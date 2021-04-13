@@ -172,6 +172,6 @@ const TextBox = styled.div`
   & span:last-child {
     font-weight: 500;
     font-size: inherit;
-    color: #2b80f2;
+    color: #4957a5;
   }
 `;

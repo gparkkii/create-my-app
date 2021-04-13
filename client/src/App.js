@@ -19,15 +19,15 @@ console.log('env :', process.env.NODE_ENV);
 function App() {
   return (
     <Router>
-      <ThemeLayout>
-        <Suspense fallback={<div>...loading</div>}>
+      <Suspense fallback={<div>...loading</div>}>
+        <ThemeLayout>
           <Switch>
             <Route exact path="/" component={Main} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
           </Switch>
-        </Suspense>
-      </ThemeLayout>
+        </ThemeLayout>
+      </Suspense>
     </Router>
   );
 }
