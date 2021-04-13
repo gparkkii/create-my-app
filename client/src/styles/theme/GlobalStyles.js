@@ -23,6 +23,21 @@ export const GlobalStyle = createGlobalStyle`
     word-wrap: break-word;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    transition: all 0.25s linear;
+    transition: all 0.25s ease;
+  }
+
+  button {
+    color: ${({ theme }) => theme.textColor};
+  }
+
+  input {
+    text-decoration: none;
+    background-color: none;
+    outline: none;
+    transition: all 0.25s ease;
+    color: ${({ theme }) => theme.textColor};
+  }
+  input:-webkit-autofill {
+    -webkit-text-fill-color: ${({ theme }) => theme.textColor};
   }
 `;

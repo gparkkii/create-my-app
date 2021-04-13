@@ -1,6 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import { useTheme } from 'context/themeProvider';
+import styled from 'styled-components';
 import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
@@ -8,10 +9,14 @@ const Header = () => {
   return (
     <StyledHeader>
       <nav>
-        <h2>👩🏼‍💻</h2>
-        gparkkii
+        <NavLink to="/">
+          <h2>👩🏼‍💻</h2>
+          <p>gparkkii</p>
+        </NavLink>
       </nav>
       <nav>
+        <NavLink to="/login">로그인</NavLink>
+        <NavLink to="/signup">회원가입</NavLink>
         <ThemeToggle toggle={toggleTheme} mode={ThemeMode} />
       </nav>
     </StyledHeader>
@@ -30,17 +35,28 @@ const StyledHeader = styled.header`
   align-items: center;
   width: 100%;
   height: 60px;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
   padding: 0px 24px;
-  border-bottom: 1px solid #3c3f43;
+  border-bottom: ${({ theme }) => theme.borderColor};
   & nav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    & h2 {
-      font-size: 28px;
-      margin-right: 8px;
+    & a {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-right: 20px;
+      & h2 {
+        font-size: 28px;
+        font-weight: 600;
+        margin: 0px 8px;
+      }
+      & p {
+        font-size: 18px;
+        font-weight: 600;
+      }
     }
   }
 `;

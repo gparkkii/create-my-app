@@ -5,6 +5,8 @@ import axios from 'axios';
 import ThemeLayout from 'components/common/ThemeLayout';
 
 const Main = loadable(() => import('pages/Main.js'));
+const Login = loadable(() => import('pages/Login.js'));
+const SignUp = loadable(() => import('pages/SignUp.js'));
 
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL =
@@ -21,6 +23,8 @@ function App() {
         <Suspense fallback={<div>...loading</div>}>
           <Switch>
             <Route exact path="/" component={Main} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={SignUp} />
           </Switch>
         </Suspense>
       </ThemeLayout>

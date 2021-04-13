@@ -1,11 +1,17 @@
 export const lightTheme = {
   bgColor: '#F9F9FC',
   textColor: '#4a4a4a',
+  borderColor: '1px solid #eaeaea',
+  inputFilled: '#ECECF2;',
+  boxShadow: 'rgba(200, 200, 200, 0.25)',
 };
 
 export const darkTheme = {
-  bgColor: '#282c35',
+  bgColor: '#2E2D36',
   textColor: '#eaeaea',
+  borderColor: '1px solid #3c3f43',
+  inputFilled: '#444452',
+  boxShadow: 'rgba(0, 0, 0, 0.15)',
 };
 
 export const theme = {

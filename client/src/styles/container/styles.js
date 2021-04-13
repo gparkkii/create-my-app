@@ -5,15 +5,14 @@ export const MainContainer = styled.div`
   display: flex;
   margin: 0 auto;
   transition: all 0.2s;
+  width: 1200px;
 
-  ${media.mobile`
-      width: calc(100% - 1rem);        
-  `}
-  ${media.tablet`
-      width: calc(100% - 2rem);
-  `}
   ${media.desktop`
-      width: 1200px;
+    width: calc(100% - 2rem);
+    border: 1px solid red;
+  `}
+  ${media.mobile`
+    width: calc(100% - 1rem);        
   `}
 `;
 
@@ -25,15 +24,15 @@ export const FlexContainer = styled.div`
   margin: 0 auto;
   transition: all 0.2s;
 
-  width: calc(100%-2rem);
+  width: 1200px;
   height: calc(100vh - 140px);
 
   /* height: calc(100vh - (header + footer height)); */
 
-  ${media.tablet`
-    width: calc(100%-1rem);
-  `}
   ${media.desktop`
-    width: 100%;
+    width: calc(100% - 2rem);
+  `}
+  ${media.mobile`
+    width: calc(100% - 1rem);        
   `}
 `;
