@@ -1,5 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loginUser } from 'modules/actions/user';
 import { useForm } from 'react-hook-form';
 import { PasswordError, EmailError } from 'library/options/errors';
 import { ContentTitle, ErrorMessage } from 'styles/typography/styles';
@@ -19,6 +21,7 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import OAuthLogin from './OAuth/OAuthLogin';
 
 function Content({ history }) {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -41,7 +44,14 @@ function Content({ history }) {
 
   const onSubmit = useCallback(user => {
     console.log(user);
-    history.push('/');
+    dispatch(loginUser(user)).then(response => {
+      console.log(response);
+      if (response.payload.success) {
+        history.push('/');
+      } else {
+        alert(response.payload.message);
+      }
+    });
   }, []);
 
   return (
