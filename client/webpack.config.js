@@ -19,11 +19,13 @@ const config = {
     modules: [path.resolve(__dirname, './src'), 'node_modules'],
     extensions: ['.js', '.jsx', '.json', 'css'],
     alias: {
+      assets: path.resolve(__dirname, 'src/assets'),
       components: path.resolve(__dirname, 'src/components'),
       context: path.resolve(__dirname, 'src/context'),
+      library: path.resolve(__dirname, 'src/library'),
+      modules: path.resolve(__dirname, 'src/modules'),
       pages: path.resolve(__dirname, 'src/pages'),
       styles: path.resolve(__dirname, 'src/styles'),
-      assets: path.resolve(__dirname, 'src/assets'),
     },
   },
   output: {

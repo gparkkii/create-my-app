@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { FlexContainer } from 'styles/container/styles';
 import Stepper from 'components/SignUp/Stepper';
 import AppLayout from 'components/common/AppLayout';
@@ -13,4 +14,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default withRouter(SignUp);

@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { PasswordError, EmailError } from 'lib/options/errors';
+import { PasswordError, EmailError } from 'library/options/errors';
 import { ContentTitle, ErrorMessage } from 'styles/typography/styles';
 import {
   FormBox,
