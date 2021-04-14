@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutUser } from 'modules/actions/user';
 import { useTheme } from 'context/themeProvider';
 import styled from 'styled-components';
 import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn);
   const [ThemeMode, toggleTheme] = useTheme();
+
+  const onClickHandler = useCallback(() => {
+    dispatch(logoutUser()).then(response => {
+      console.log(response);
+    });
+  }, []);
+
   return (
     <StyledHeader>
       <nav>
@@ -15,8 +26,21 @@ const Header = () => {
         </NavLink>
       </nav>
       <nav>
-        <NavLink to="/login">로그인</NavLink>
-        <NavLink to="/signup">회원가입</NavLink>
+        {!isLoggedIn && (
+          <>
+            <NavLink to="/login">로그인</NavLink>
+            <NavLink to="/signup">회원가입</NavLink>
+          </>
+        )}
+        {isLoggedIn && (
+          <>
+            <NavLink to="/">
+              <button type="submit" onClick={onClickHandler}>
+                로그아웃
+              </button>
+            </NavLink>
+          </>
+        )}
         <ThemeToggle toggle={toggleTheme} mode={ThemeMode} />
       </nav>
     </StyledHeader>
@@ -35,7 +59,7 @@ const StyledHeader = styled.header`
   align-items: center;
   width: 100%;
   height: 60px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   padding: 0px 24px;
   border-bottom: ${({ theme }) => theme.borderColor};

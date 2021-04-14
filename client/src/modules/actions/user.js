@@ -9,7 +9,7 @@ import {
 
 export function signupUser(dataToSubmit) {
   const request = axios
-    .post(`/signup`, dataToSubmit)
+    .post(`api/signup`, dataToSubmit)
     .then(response => response.data);
   return {
     type: SIGNUP_USER,
@@ -19,7 +19,7 @@ export function signupUser(dataToSubmit) {
 
 export function checkUser(dataToSubmit) {
   const request = axios
-    .post(`/signup/checkEmail`, {
+    .post(`api/signup/checkEmail`, {
       email: dataToSubmit,
     })
     .then(response => response.data);
@@ -31,7 +31,7 @@ export function checkUser(dataToSubmit) {
 
 export function loginUser(dataToSubmit) {
   const request = axios
-    .post(`/login`, dataToSubmit)
+    .post(`api/login`, dataToSubmit)
     .then(response => response.data);
   return {
     type: LOGIN_USER,
@@ -40,7 +40,7 @@ export function loginUser(dataToSubmit) {
 }
 
 export function logoutUser() {
-  const request = axios.get(`/logout`).then(response => response.data);
+  const request = axios.get(`api/logout`).then(response => response.data);
   return {
     type: LOGOUT_USER,
     payload: request,

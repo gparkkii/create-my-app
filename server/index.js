@@ -3,8 +3,8 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const config = require('./config/key');
-const authRouter = require('./routes/api/auth');
-const uploadRouter = require('./routes/api/upload');
+const authRouter = require('./routes/auth');
+const uploadRouter = require('./routes/upload');
 const signupRouter = require('./routes/user/signup');
 const loginRouter = require('./routes/user/login');
 const logoutRouter = require('./routes/user/logout');
@@ -35,8 +35,8 @@ app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 
 //============= API ==============//
-app.use('/api/auth', authRouter);
-app.use('/api/uploads', uploadRouter);
+app.use('/auth', authRouter);
+app.use('/uploads', uploadRouter);
 app.use('/uploads', express.static('uploads'))
 
 const port = 5000;

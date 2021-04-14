@@ -10,9 +10,14 @@ import {
 const { produce } = require('immer');
 
 const initialState = {
-  success: '',
-  message: '',
-  hashedEmail: '',
+  isLoggedIn: false,
+  data: {
+    success: '',
+    message: '',
+    hashedEmail: '',
+    isAuth: '',
+    error: '',
+  },
 };
 
 export default function userReducer(prevState = initialState, action) {
@@ -26,9 +31,11 @@ export default function userReducer(prevState = initialState, action) {
         break;
       case LOGIN_USER:
         draft.data = action.payload;
+        draft.isLoggedIn = action.payload.isLoggedIn;
         break;
       case LOGOUT_USER:
-        draft.data = null;
+        draft.data = action.payload;
+        draft.isLoggedIn = action.payload.isLoggedIn;
         break;
       case AUTH_USER:
         draft.data = action.payload;

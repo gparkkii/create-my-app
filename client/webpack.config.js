@@ -99,9 +99,12 @@ const config = {
     port: 8080,
     contentBase: path.join(__dirname, '/dist'), // contentBase는 output.path와 동일해야한다.
     proxy: {
-      '/': {
+      '/api': {
         target: 'http://localhost:5000',
         changeOrigin: true,
+        pathRewrite: {
+          '^/api': '', // URL ^/api -> 공백 변경
+        },
       },
     },
     disableHostCheck: true,
