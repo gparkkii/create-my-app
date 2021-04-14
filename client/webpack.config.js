@@ -99,11 +99,12 @@ const config = {
     port: 8080,
     contentBase: path.join(__dirname, '/dist'), // contentBase는 output.path와 동일해야한다.
     proxy: {
-      '/api/': {
-        target: 'http://localhost:8080', // 서버 주소 넣기
+      '/': {
+        target: 'http://localhost:5000',
         changeOrigin: true,
       },
     },
+    disableHostCheck: true,
     index: 'index.html',
     open: true,
     hot: true,

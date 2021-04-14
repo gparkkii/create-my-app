@@ -49,8 +49,6 @@ const userSchema = mongoose.Schema({
   }
 })
 
-const User = mongoose.model('User', userSchema);
-
 userSchema.pre('save', function (next) {
   var user = this;
   if (user.isModified('password')) {
@@ -68,6 +66,7 @@ userSchema.pre('save', function (next) {
 })
 
 userSchema.methods.comparePassword = function(plainPassword, callback) {
+  console.log(plainPassword);
   bcrypt.compare(plainPassword, this.password, function(err, isMatch) {
     if (err) return callback(err);
     callback(null, isMatch);
@@ -93,6 +92,8 @@ userSchema.statics.findByToken = function(token, callback) {
     })
   })
 }
+
+const User = mongoose.model('User', userSchema);
 
 module.exports = {
     User

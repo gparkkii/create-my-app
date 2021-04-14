@@ -9,6 +9,7 @@ const { User } = require("../../models/User");
 router.post('/', (req, res) => {
   User.findOne({ email: req.body.email }, (err, user) => {
     console.log(req.body);
+    console.log(user);
     if (!user) {
       return res.json({
         success: false,
