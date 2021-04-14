@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { media } from 'styles/media_query';
 import { ColumnBox } from 'styles/form/styles';
+import { withRouter } from 'react-router-dom';
 import UserForm from './Steps/UserForm';
 import ProfileForm from './Steps/ProfileForm';
 import AvatarForm from './Steps/AvatarForm';
@@ -26,7 +27,7 @@ function getStepContent(step) {
   }
 }
 
-function Stepper() {
+function Stepper({ history }) {
   const steps = getSteps();
 
   const [currentStep, setCurrentStep] = useState(0);
@@ -42,6 +43,7 @@ function Stepper() {
 
   function handleSubmit(data) {
     console.log(data);
+    history.push('/');
   }
 
   return (
@@ -75,7 +77,7 @@ function Stepper() {
   );
 }
 
-export default Stepper;
+export default withRouter(Stepper);
 
 const Container = styled.div`
   display: flex;

@@ -1,6 +1,10 @@
 import React, { useRef } from 'react';
 import { useForm } from 'react-hook-form';
-import { DescriptionError, NickNameError, UrlError } from 'lib/options/errors';
+import {
+  DescriptionError,
+  NickNameError,
+  UrlError,
+} from 'library/options/errors';
 import {
   FormBox,
   FilledInput,

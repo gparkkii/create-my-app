@@ -5,7 +5,7 @@ import {
   EmailError,
   PasswordError,
   PasswordConfirmError,
-} from 'lib/options/errors';
+} from 'library/options/errors';
 import {
   FormBox,
   FilledInput,
