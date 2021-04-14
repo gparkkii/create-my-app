@@ -5,9 +5,10 @@ import { ColumnBox } from 'styles/form/styles';
 import UserForm from './Steps/UserForm';
 import ProfileForm from './Steps/ProfileForm';
 import AvatarForm from './Steps/AvatarForm';
+import CompleteForm from './Steps/CompleteForm';
 
 function getSteps() {
-  return ['기본 정보', '프로필 정보', '내 아바타'];
+  return ['기본 정보', '프로필 정보', '내 아바타', '시작하기'];
 }
 
 function getStepContent(step) {
@@ -18,6 +19,8 @@ function getStepContent(step) {
       return <ProfileForm />;
     case 2:
       return <AvatarForm />;
+    case 3:
+      return <CompleteForm />;
     default:
       return '404 Unknown Error';
   }
@@ -80,7 +83,7 @@ const Container = styled.div`
   justify-content: start;
   align-items: center;
   width: 34em;
-  height: 720px;
+  min-height: 48em;
   border-radius: 12px;
   padding: 40px;
   background-color: ${({ theme }) => theme.contentBox};

@@ -2,9 +2,9 @@ export const lightTheme = {
   bgColor: '#F9F9FC',
   textColor: '#4a4a4a',
   borderColor: '1px solid #eaeaea',
-  inputFilled: '#ECECF2;',
+  inputFilled: '#ECECF2',
   contentBox: '#fff',
-  boxShadow: 'rgba(200, 200, 200, 0.25)',
+  boxShadow: '0 2px 4px 0 rgba(150, 150, 150, 0.15)',
 };
 
 export const darkTheme = {
@@ -13,7 +13,7 @@ export const darkTheme = {
   borderColor: '1px solid #3c3f43',
   inputFilled: '#444452',
   contentBox: '#34333c',
-  boxShadow: 'rgba(0, 0, 0, 0.15)',
+  boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.25)',
 };
 
 export const theme = {

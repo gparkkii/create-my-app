@@ -12,7 +12,6 @@ import {
   AlertMessage,
   ContentTitle,
   ErrorMessage,
-  InputAlert,
 } from 'styles/typography/styles';
 
 const ProfileForm = () => {

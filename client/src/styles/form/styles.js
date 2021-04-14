@@ -92,13 +92,13 @@ export const FilledInput = styled.input`
 `;
 
 export const UnderlinedInput = styled.input`
-  position: relative;
   width: 100%;
-  height: 48px;
-  padding: 0px 14px;
+  height: 42px;
+  padding: 0px 10px;
+  font-size: 16px;
   background-color: transparent;
   border: 1px solid transparent;
-  border-bottom: 1px solid #c1c8f0;
+  border-bottom: 1px solid #ccc;
   &:hover {
     border-bottom: 1px solid #4957a5;
   }
@@ -220,5 +220,108 @@ export const SocialLogin = styled.div`
     line-height: 14px;
     font-weight: 500;
     padding-left: 10px;
+  }
+`;
+
+export const ProfileBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
+
+export const ImageBox = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin: 20px 0px;
+  padding: 20px;
+  border-radius: 6px;
+  border: 1px solid #f9f9fc;
+  box-shadow: 0 3px 6px 0 rgba(193, 200, 240, 0.35);
+`;
+
+export const BlankBox = styled.div`
+  position: relative;
+  width: ${props => (props.smallSize ? '40px' : '102px')};
+  height: ${props => (props.smallSize ? '40px' : '102px')};
+  font-size: ${props => (props.smallSize ? '12px' : '28px')};
+  font-weight: 500;
+`;
+
+export const BlankName = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  color: ${props => props.color || '#212121'};
+`;
+
+export const ShowImage = styled.img`
+  width: ${props => (props.smallSize ? '40px' : '102px')};
+  height: ${props => (props.smallSize ? '40px' : '102px')};
+  border-radius: ${props => (props.smallSize ? '100%' : '10px')};
+  box-shadow: 0 2px 4px 0 rgba(100, 100, 100, 0.15);
+  background-color: ${props => props.backgroundColor || 'transparent'};
+`;
+
+export const ImageButtonBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+  & :first-of-type {
+    margin-right: 10px;
+  }
+  & :last-of-type {
+    margin-left: 10px;
+  }
+`;
+
+export const HiddenInput = styled.input`
+  display: none;
+  &: checked + label {
+    border: 1px solid #3f51b5;
+    color: #3f51b5;
+    font-weight: 500;
+  }
+`;
+
+export const ImageLabel = styled.label`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33.3%;
+  height: 48px;
+  font-size: 14px !important;
+  border: 1px solid #dde2fa;
+  border-radius: 4px;
+  &: hover {
+    border: 1px solid #3f51b5;
+    box-shadow: inset 0 0 0 1px #3f51b5;
+  }
+`;
+
+export const UserImageTitle = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #353535;
+  font-size: 22px;
+  font-weight: 500;
+  margin-left: 10px;
+  margin-top: 10px;
+  & strong {
+    color: #3f51b5;
+    font-weight: 600;
+    margin-left: 10px;
   }
 `;
