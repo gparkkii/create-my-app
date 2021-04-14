@@ -177,6 +177,22 @@ export const AbsoluteButton = styled.div`
   }
 `;
 
+export const StyledTextArea = styled.textarea`
+  width: 100%;
+  height: 100px;
+  padding: 20px;
+  border-radius: 20px;
+  color: ${({ theme }) => theme.textColor};
+  background-color: ${({ theme }) => theme.inputFilled};
+  &:hover {
+    border: 1px solid #4957a5;
+  }
+  &:focus {
+    border: 1px solid #4957a5;
+    box-shadow: inset 0 0 0 1px #4957a5;
+  }
+`;
+
 export const SocialLogin = styled.div`
   display: flex;
   align-items: center;

@@ -146,7 +146,6 @@ const UserForm = () => {
               <ErrorMessage>{PasswordError[errors.password.type]}</ErrorMessage>
             )}
           </InputBox>
-          {/** ***************** 비밀번호 확인 ****************** */}
           <InputBox>
             <label
               className={errors.passwordConfirm ? 'errorTypeLabel' : null}
