@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import loadable from '@loadable/component';
 import axios from 'axios';
 import ThemeLayout from 'components/common/ThemeLayout';
+import Auth from 'library/utils/auth';
 
 const Main = loadable(() => import('pages/Main.js'));
 const Login = loadable(() => import('pages/Login.js'));
@@ -22,9 +23,9 @@ function App() {
       <Suspense fallback={<div>...loading</div>}>
         <ThemeLayout>
           <Switch>
-            <Route exact path="/" component={Main} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={SignUp} />
+            <Route exact path="/" component={Auth(Main, null)} />
+            <Route path="/login" component={Auth(Login, false)} />
+            <Route path="/signup" component={Auth(SignUp, false)} />
           </Switch>
         </ThemeLayout>
       </Suspense>
