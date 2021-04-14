@@ -1,6 +1,31 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+import { media } from 'styles/media_query';
+import { ColumnBox } from 'styles/form/styles';
+import UserForm from './Steps/UserForm';
+import ProfileForm from './Steps/ProfileForm';
+import AvatarForm from './Steps/AvatarForm';
 
-function useFormProgress() {
+function getSteps() {
+  return ['기본 정보', '프로필 정보', '내 아바타'];
+}
+
+function getStepContent(step) {
+  switch (step) {
+    case 0:
+      return <UserForm />;
+    case 1:
+      return <ProfileForm />;
+    case 2:
+      return <AvatarForm />;
+    default:
+      return '404 Unknown Error';
+  }
+}
+
+function Stepper() {
+  const steps = getSteps();
+
   const [currentStep, setCurrentStep] = useState(0);
   function goForward() {
     setCurrentStep(currentStep + 1);
@@ -8,13 +33,7 @@ function useFormProgress() {
   function goBack() {
     setCurrentStep(currentStep - 1);
   }
-  return [currentStep, goForward, goBack];
-}
 
-function Stepper() {
-  const steps = ['기본 정보', '프로필 정보', '내 아바타'];
-
-  const [currentStep, goForward, goBack] = useFormProgress();
   const isFirst = currentStep === 0;
   const isLast = currentStep === steps.length - 1;
 
@@ -23,19 +42,22 @@ function Stepper() {
   }
 
   return (
-    <div>
-      {steps[currentStep]}
+    <Container>
       <div>
+        Step {currentStep + 1} of {steps.length}
+      </div>
+      {steps[currentStep]}
+      <ColumnBox>{getStepContent(currentStep)}</ColumnBox>
+      <ColumnBox>
         {!isFirst && (
           <button type="button" onClick={() => goBack()}>
-            Go Back
+            이전
           </button>
         )}
         <button
           type="submit"
           onClick={e => {
             e.preventDefault();
-
             if (isLast) {
               handleSubmit();
             } else {
@@ -43,14 +65,42 @@ function Stepper() {
             }
           }}
         >
-          {isLast ? 'Submit' : 'Next'}
+          {isLast ? '입력완료' : '다음'}
         </button>
-      </div>
-      <div>
-        Step {currentStep + 1} of {steps.length}
-      </div>
-    </div>
+      </ColumnBox>
+    </Container>
   );
 }
 
 export default Stepper;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 34em;
+  height: 720px;
+  border-radius: 12px;
+  padding: 40px;
+  background-color: ${({ theme }) => theme.contentBox};
+  transition: all 0.2s ease;
+  ${media.tablet`
+    width: 26em;
+  `}
+  ${media.mini`
+    width: 22em;
+  `}
+  ${media.mobile`
+    width: 20em;        
+  `}
+  & div:nth-child(1) {
+    flex-grow: 0;
+  }
+  & div:nth-child(2) {
+    flex-grow: 2;
+  }
+  & div:nth-child(3) {
+    flex-grow: 0;
+  }
+`;

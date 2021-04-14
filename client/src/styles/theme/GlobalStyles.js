@@ -23,10 +23,11 @@ export const GlobalStyle = createGlobalStyle`
     word-wrap: break-word;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    transition: all 0.25s ease;
+    transition: all 0.2s ease;
   }
 
   button {
+    transition: all 0.2s ease;
     color: ${({ theme }) => theme.textColor};
   }
 
@@ -34,7 +35,7 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     background-color: none;
     outline: none;
-    transition: all 0.25s ease;
+    transition: all 0.2s ease;
     color: ${({ theme }) => theme.textColor};
   }
   input:-webkit-autofill {

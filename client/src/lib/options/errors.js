@@ -1,11 +1,12 @@
 export const PasswordError = {
   required: '비밀번호를 확인해주세요.',
   minLength: '비밀번호를 8글자 이상 입력해주세요.',
+  maxLength: '비밀번호를 20글자 이내로 입력해주세요.',
   checkLower: '비밀번호에 소문자를 포함해주세요.',
   checkUpper: '비밀번호에 대문자를 포함해주세요.',
   checkNumber: '비밀번호에 숫자를 포함해주세요.',
   checkSpec: '비밀번호에 특수문자를 포함해주세요.',
-  checkValidate: '비밀번호가 일치하지 않습니다.',
+  checkLang: '비밀번호에 한글은 포함할 수 없습니다.',
 };
 
 export const PasswordConfirmError = {

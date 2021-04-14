@@ -5,6 +5,13 @@ export const MarginBox = styled.div`
   margin: ${props => props.margin};
 `;
 
+export const ColumnBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const FormBox = styled.form`
   display: flex;
   flex-direction: column;
@@ -12,17 +19,16 @@ export const FormBox = styled.form`
   justify-content: center;
   transition: all 0.2s;
   width: 28em;
-  padding-top: 15px;
+  margin-top: 15px;
+  padding: 0px 20px;
   ${media.tablet`
     width: 26em;
-    padding: 0px 20px;
   `}
   ${media.mini`
     width: 24em;     
-    padding: 0px 20px;
   `}
   ${media.mobile`
-    width: 18em;        
+    width: 18em;     
   `}
 `;
 

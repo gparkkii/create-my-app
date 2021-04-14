@@ -87,7 +87,12 @@ function Content({ history }) {
               {...register('password', {
                 required: true,
                 minLength: 8,
+                maxLength: 20,
                 validate: {
+                  checkLang: value =>
+                    ![/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/].every(pattern =>
+                      pattern.test(value),
+                    ),
                   checkLower: value =>
                     [/[a-z]/].every(pattern => pattern.test(value)),
                   checkUpper: value =>

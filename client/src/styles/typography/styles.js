@@ -21,12 +21,20 @@ export const ErrorMessage = styled.p`
   }
 `;
 
-export const AlertMessage = styled.p`
-  color: #3f51b5;
+export const InputAlert = styled.p`
+  color: #999;
   font-size: 13px;
-  margin-top: 10px;
+  margin: 8px;
+  text-align: left;
   &:before {
     display: inline;
     content: '※ ';
   }
+`;
+
+export const AlertMessage = styled.p`
+  color: #4957a5;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
 `;
