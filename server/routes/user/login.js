@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
         res.cookie("x_authExp", user.tokenExp);
         res.cookie('x_auth', user.token)
         .status(200)
-        .json({ success: true, isLoggedIn: true, userId: user._id })
+        .json({ success: true, userId: user._id })
       })
     })
   })

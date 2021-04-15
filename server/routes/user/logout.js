@@ -16,7 +16,7 @@ router.get('/', auth, (req, res) => {
       if(err) return res.json({ success: false, err});
       return res.status(200).send({ 
         success: true,
-        isLoggedIn: false,
+        isAuth: false,
       })
     }
   )

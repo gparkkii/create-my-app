@@ -8,7 +8,7 @@ import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+  const isAuth = useSelector(state => state.user.data.isAuth);
   const [ThemeMode, toggleTheme] = useTheme();
 
   const onClickHandler = useCallback(() => {
@@ -26,13 +26,13 @@ const Header = () => {
         </NavLink>
       </nav>
       <nav>
-        {!isLoggedIn && (
+        {!isAuth && (
           <>
             <NavLink to="/login">로그인</NavLink>
             <NavLink to="/signup">회원가입</NavLink>
           </>
         )}
-        {isLoggedIn && (
+        {isAuth && (
           <>
             <NavLink to="/">
               <button type="submit" onClick={onClickHandler}>
