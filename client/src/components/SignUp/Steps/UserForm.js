@@ -26,6 +26,7 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import { useDispatch } from 'react-redux';
 import { checkUser } from 'modules/actions/user';
+import { addUserForm } from 'modules/actions/profile';
 
 const UserForm = ({ next }) => {
   const dispatch = useDispatch();
@@ -51,9 +52,9 @@ const UserForm = ({ next }) => {
   const onSubmit = data => {
     console.log(data);
     dispatch(checkUser(data.email)).then(response => {
-      console.log(response);
       if (response.payload.success) {
-        alert('success');
+        dispatch(addUserForm(data));
+        next();
       } else {
         setError('email', {
           type: 'validate',
