@@ -1,4 +1,5 @@
 const express = require('express');
+const crypto = require('crypto');
 const router = express.Router();
 const { User } = require("../../models/User");
 
@@ -31,9 +32,11 @@ router.post('/checkEmail', (req, res) => {
       message: "이미 가입된 이메일입니다."
     });
     else {
+      var hashedEmail = crypto.createHash('md5').update(req.body.email).digest('hex');
       return res.status(200).json({
         success: true,
-        message: "사용 가능한 이메일입니다."
+        message: "사용 가능한 이메일입니다.",
+        hashedEmail: hashedEmail
       })
     }
   })
