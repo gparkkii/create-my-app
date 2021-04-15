@@ -27,9 +27,9 @@ function Stepper({ history }) {
       case 0:
         return <UserForm next={goForward} />;
       case 1:
-        return <ProfileForm />;
+        return <ProfileForm next={goForward} />;
       case 2:
-        return <AvatarForm />;
+        return <AvatarForm next={goForward} />;
       case 3:
         return <CompleteForm />;
       default:
@@ -87,9 +87,10 @@ const Container = styled.div`
   align-items: center;
   width: 34em;
   min-height: 48em;
-  border-radius: 12px;
+  border-radius: 30px;
   padding: 40px;
   background-color: ${({ theme }) => theme.contentBox};
+  box-shadow: ${({ theme }) => theme.boxShadow};
   transition: all 0.2s ease;
   ${media.tablet`
     width: 26em;

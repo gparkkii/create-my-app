@@ -1,5 +1,8 @@
 /* eslint-disable no-alert */
 import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { checkUser } from 'modules/actions/user';
+import { addUserForm } from 'modules/actions/profile';
 import { useForm } from 'react-hook-form';
 import {
   NameError,
@@ -24,9 +27,6 @@ import {
 import IconButton from '@material-ui/core/IconButton';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import { useDispatch } from 'react-redux';
-import { checkUser } from 'modules/actions/user';
-import { addUserForm } from 'modules/actions/profile';
 
 const UserForm = ({ next }) => {
   const dispatch = useDispatch();
@@ -195,7 +195,7 @@ const UserForm = ({ next }) => {
             한글 제외 영문(대/소문자), 숫자, 특수문자를 조합하여 8~20자 이내로
             입력해주세요.
           </InputAlert>
-          <BorderButton> 입력완료 </BorderButton>
+          <BorderButton type="submit"> 입력완료 </BorderButton>
         </FormBox>
       </MarginBox>
     </>

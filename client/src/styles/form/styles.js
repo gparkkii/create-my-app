@@ -82,6 +82,7 @@ export const FilledInput = styled.input`
   background-color: ${({ theme }) => theme.inputFilled};
   border: none;
   border-radius: 30px;
+  margin-top: 2px;
   &:hover {
     border: 1px solid #4957a5;
   }

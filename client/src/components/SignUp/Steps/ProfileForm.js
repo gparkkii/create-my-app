@@ -1,4 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addProfileForm } from 'modules/actions/profile';
 import { useForm } from 'react-hook-form';
 import {
   DescriptionError,
@@ -11,6 +13,7 @@ import {
   InputBox,
   StyledTextArea,
   MarginBox,
+  BorderButton,
 } from 'styles/form/styles';
 import {
   AlertMessage,
@@ -18,7 +21,9 @@ import {
   ErrorMessage,
 } from 'styles/typography/styles';
 
-const ProfileForm = () => {
+const ProfileForm = ({ next }) => {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -27,8 +32,9 @@ const ProfileForm = () => {
     mode: 'onTouched',
   });
 
-  const onSubmit = e => {
-    e.preventDefault();
+  const onSubmit = data => {
+    dispatch(addProfileForm(data));
+    next();
   };
 
   return (
@@ -98,7 +104,7 @@ const ProfileForm = () => {
               name="description"
               className={errors.description ? 'errorInput' : null}
               placeholder="자기소개를 입력해주세요"
-              {...register('nickname', {
+              {...register('description', {
                 required: true,
                 maxLength: 100,
               })}
@@ -109,6 +115,9 @@ const ProfileForm = () => {
               </ErrorMessage>
             )}
           </InputBox>
+          <BorderButton type="submit" marginTop="40px">
+            입력완료
+          </BorderButton>
         </FormBox>
       </MarginBox>
     </>
