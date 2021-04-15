@@ -6,8 +6,6 @@ const saltRounds = 10;
 const userSchema = mongoose.Schema({
   name: {
     type: String,
-    minLength: 2,
-    maxLength: 12,
     required: true,
   },
   email: {
@@ -26,8 +24,6 @@ const userSchema = mongoose.Schema({
   profileImageType: { type: String },
   nickname: {
     type: String,
-    minlength: 2,
-    maxlength: 12,
     required: true,
   },
   userDescription: {
@@ -66,7 +62,6 @@ userSchema.pre('save', function (next) {
 })
 
 userSchema.methods.comparePassword = function(plainPassword, callback) {
-  console.log(plainPassword);
   bcrypt.compare(plainPassword, this.password, function(err, isMatch) {
     if (err) return callback(err);
     callback(null, isMatch);

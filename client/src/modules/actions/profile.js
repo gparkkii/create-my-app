@@ -1,4 +1,4 @@
-import { USER_FORM, PROFILE_FORM, AVATAR_FORM } from './types';
+import { USER_FORM, PROFILE_FORM, AVATAR_FORM, RESET_FORM } from './types';
 
 export function addUserForm(dataToSubmit) {
   return {
@@ -18,5 +18,11 @@ export function addAvatarForm(dataToSubmit) {
   return {
     type: AVATAR_FORM,
     payload: dataToSubmit,
+  };
+}
+
+export function resetProfileForm() {
+  return {
+    type: RESET_FORM,
   };
 }

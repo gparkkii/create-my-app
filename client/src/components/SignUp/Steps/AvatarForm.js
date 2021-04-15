@@ -2,9 +2,19 @@ import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addAvatarForm } from 'modules/actions/profile';
 import { useColorMaker } from 'hooks/useColorMaker';
-import { FormBox, BorderButton, MarginBox } from 'styles/form/styles';
-import { ContentTitle } from 'styles/typography/styles';
-import styled from 'styled-components';
+import {
+  FormBox,
+  BorderButton,
+  MarginBox,
+  ColumnBox,
+  BlankBox,
+  BlankName,
+  BigAvatar,
+  AvatarImage,
+  AvatarLabelBox,
+  HiddenInput,
+} from 'styles/form/styles';
+import { ProfileTitle, ContentTitle } from 'styles/typography/styles';
 import axios from 'axios';
 
 const AvatarForm = ({ next }) => {
@@ -86,21 +96,21 @@ const AvatarForm = ({ next }) => {
 
       <FormBox onSubmit={onSubmit}>
         <MarginBox margin="20px 0 0 0" />
-        <ImageBox>
-          <ImageContainer
+        <ColumnBox>
+          <BigAvatar
             onClick={() => {
               HiddenRef.current.click();
             }}
           >
             {CheckedLabel === 'gravatar' && (
-              <ShowImage
+              <AvatarImage
                 src={GravatarUrl}
                 alt={`${ProfileData.name}'s gravatar`}
               />
             )}
             {CheckedLabel === 'blank' && (
               <BlankBox>
-                <ShowImage
+                <AvatarImage
                   backgroundColor={BlankBg}
                   src={BlankUrl}
                   alt={`${ProfileData.name}'s blank`}
@@ -111,9 +121,9 @@ const AvatarForm = ({ next }) => {
               </BlankBox>
             )}
             {CheckedLabel === 'upload' && (
-              <ShowImage src={Preview} alt="upload" />
+              <AvatarImage src={Preview} alt="upload" />
             )}
-          </ImageContainer>
+          </BigAvatar>
           <HiddenInput
             type="radio"
             id="gravatar"
@@ -142,32 +152,32 @@ const AvatarForm = ({ next }) => {
             capture="user"
             accept="image/png, image/jpg, image/jpeg"
           />
-        </ImageBox>
+        </ColumnBox>
         <ProfileTitle>
           <strong>{ProfileData.nickname}</strong> 님,
           <br />
           아바타를 선택해주세요.
         </ProfileTitle>
-        <AvatarLabel>
+        <AvatarLabelBox>
           <label
             htmlFor="blank"
-            className={CheckedLabel === 'blank' && 'focusedLabel'}
+            className={CheckedLabel === 'blank' ? 'focusedLabel' : undefined}
           >
             기본 아바타
           </label>
           <label
             htmlFor="gravatar"
-            className={CheckedLabel === 'gravatar' && 'focusedLabel'}
+            className={CheckedLabel === 'gravatar' ? 'focusedLabel' : undefined}
           >
             그라바타
           </label>
           <label
             htmlFor="uploadImage"
-            className={CheckedLabel === 'upload' && 'focusedLabel'}
+            className={CheckedLabel === 'upload' ? 'focusedLabel' : undefined}
           >
             내 아바타
           </label>
-        </AvatarLabel>
+        </AvatarLabelBox>
 
         <BorderButton type="submit" marginTop="60px">
           입력완료
@@ -178,87 +188,3 @@ const AvatarForm = ({ next }) => {
 };
 
 export default AvatarForm;
-
-const ProfileTitle = styled.h2`
-  font-size: 25px;
-  font-weight: 600;
-  width: 100%;
-  text-align: center;
-  margin: 28px 0px;
-  & strong {
-    color: #4957a5;
-  }
-`;
-
-const ImageBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-`;
-
-const HiddenInput = styled.input`
-  display: none;
-`;
-
-const ImageContainer = styled.div`
-  width: 156px;
-  height: 156px;
-  background-color: #eaeaea;
-  border-radius: 100%;
-`;
-
-const ShowImage = styled.img`
-  width: 100%;
-  height: 100%;
-  border-radius: 100%;
-  background-color: ${props => props.backgroundColor || 'transparent'};
-  box-shadow: ${({ theme }) => theme.boxShadow};
-`;
-
-const AvatarLabel = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  & label:first-of-type {
-    margin-right: 8px;
-  }
-  & label:last-of-type {
-    margin-left: 8px;
-  }
-  & label {
-    width: 33.3%;
-    height: 48px;
-    border: 1px solid #c1c8f0;
-    border-radius: 30px;
-    font-size: 15px;
-    line-height: 48px;
-    text-align: center;
-    &: hover {
-      border: 1px solid #4957a5;
-    }
-  }
-`;
-
-const BlankBox = styled.div`
-  position: relative;
-  width: 156px;
-  height: 156px;
-  border-radius: 100%;
-  font-size: 28px;
-  font-weight: 500;
-`;
-
-const BlankName = styled.div`
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  right: 0;
-  color: ${props => props.color || '#212121'};
-`;

@@ -1,28 +1,33 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import { media } from 'styles/media_query';
-import { ColumnBox } from 'styles/form/styles';
 import { withRouter } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { signupUser } from 'modules/actions/user';
+import { media } from 'styles/media_query';
+import { ColumnBox, BorderButton, FormBox } from 'styles/form/styles';
+import styled from 'styled-components';
+import { resetProfileForm } from 'modules/actions/profile';
 import UserForm from './Steps/UserForm';
 import ProfileForm from './Steps/ProfileForm';
 import AvatarForm from './Steps/AvatarForm';
 import CompleteForm from './Steps/CompleteForm';
 
 function Stepper({ history }) {
+  const dispatch = useDispatch();
+  const profileData = useSelector(state => state.profile);
+
   const [currentStep, setCurrentStep] = useState(0);
 
-  function goForward() {
+  const handleReset = () => {
+    setCurrentStep(0);
+  };
+  const goForward = () => {
     setCurrentStep(currentStep + 1);
-  }
-  function goBack() {
-    setCurrentStep(currentStep - 1);
-  }
+  };
 
-  function getSteps() {
+  const getSteps = () => {
     return ['기본 정보', '프로필 정보', '내 아바타', '시작하기'];
-  }
-
-  function getStepContent(step) {
+  };
+  const getStepContent = step => {
     switch (step) {
       case 0:
         return <UserForm next={goForward} />;
@@ -31,21 +36,26 @@ function Stepper({ history }) {
       case 2:
         return <AvatarForm next={goForward} />;
       case 3:
-        return <CompleteForm />;
+        return <CompleteForm reset={handleReset} />;
       default:
         return '404 Unknown Error';
     }
-  }
+  };
 
   const steps = getSteps();
-
-  const isFirst = currentStep === 0;
   const isLast = currentStep === steps.length - 1;
 
-  function handleSubmit(data) {
-    console.log(data);
-    history.push('/');
-  }
+  const onSubmit = () => {
+    dispatch(signupUser(profileData)).then(response => {
+      if (response.payload.success) {
+        dispatch(resetProfileForm());
+        history.push('/login');
+      } else {
+        alert(response.payload.message);
+        console.log(response.payload);
+      }
+    });
+  };
 
   return (
     <Container>
@@ -54,26 +64,29 @@ function Stepper({ history }) {
       </div>
       {steps[currentStep]}
       <ColumnBox>{getStepContent(currentStep)}</ColumnBox>
-      <ColumnBox>
-        {!isFirst && (
-          <button type="button" onClick={() => goBack()}>
-            이전
-          </button>
-        )}
-        {/* <button
-          type="submit"
-          onClick={e => {
-            e.preventDefault();
-            if (isLast) {
-              handleSubmit();
-            } else {
-              goForward();
-            }
-          }}
-        >
-          {isLast ? '입력완료' : '다음'}
-        </button> */}
-      </ColumnBox>
+      {isLast && (
+        <FormBox>
+          <BorderButton
+            onClick={e => {
+              e.preventDefault();
+              onSubmit();
+            }}
+            type="button"
+            marginTop="30px"
+          >
+            가입하기
+          </BorderButton>
+          <ResetButton
+            type="button"
+            onClick={e => {
+              e.preventDefault();
+              handleReset();
+            }}
+          >
+            처음으로
+          </ResetButton>
+        </FormBox>
+      )}
     </Container>
   );
 }
@@ -110,4 +123,13 @@ const Container = styled.div`
   & div:nth-child(3) {
     flex-grow: 0;
   }
+`;
+
+const ResetButton = styled.button`
+  width: 100%;
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: underline;
+  color: #c1c8f0;
 `;

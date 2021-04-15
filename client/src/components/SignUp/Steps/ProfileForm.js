@@ -94,24 +94,24 @@ const ProfileForm = ({ next }) => {
           </InputBox>
           <InputBox>
             <label
-              className={errors.description ? 'errorTypeLabel' : null}
-              htmlFor="description"
+              className={errors.userDescription ? 'errorTypeLabel' : null}
+              htmlFor="userDescription"
             >
               자기소개
             </label>
             <StyledTextArea
-              id="description"
-              name="description"
-              className={errors.description ? 'errorInput' : null}
+              id="userDescription"
+              name="userDescription"
+              className={errors.userDescription ? 'errorInput' : null}
               placeholder="자기소개를 입력해주세요"
-              {...register('description', {
+              {...register('userDescription', {
                 required: true,
                 maxLength: 100,
               })}
             />
-            {errors.description && (
+            {errors.userDescription && (
               <ErrorMessage>
-                {DescriptionError[errors.description.type]}
+                {DescriptionError[errors.userDescription.type]}
               </ErrorMessage>
             )}
           </InputBox>

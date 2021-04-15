@@ -10,14 +10,13 @@ router.get('/', auth , (req, res) => {
   res.status(200).json({   
     isAuth: true,
     _id: req.user._id,
-    name: req.body.name,
+    name: req.user.name,
     email: req.user.email,
-    password: req.user.password,
-    profileImage: req.user.profileImage,
-    profileImage: req.user.profileImageType,
     nickname: req.user.nickname,
-    description: req.body.userDescription,
-    url: req.user.url
+    profileImage: req.user.profileImage,
+    profileImageType: req.user.profileImageType,
+    userDescription: req.user.userDescription,
+    url: req.user.url,
   })
 })
 

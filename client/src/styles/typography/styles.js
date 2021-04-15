@@ -50,13 +50,14 @@ export const UserTitle = styled.h2`
   }
 `;
 
-export const ProfileTitle = styled.div`
-  margin-left: 24px;
-  font-size: 14px;
-  line-height: 24px;
-  font-weight: 400;
+export const ProfileTitle = styled.h2`
+  font-size: 25px;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+  margin: 28px 0px;
   & strong {
-    font-weight: 500;
+    color: #4957a5;
   }
 `;
 

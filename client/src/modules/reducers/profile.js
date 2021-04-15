@@ -1,5 +1,10 @@
 /* eslint-disable consistent-return */
-import { USER_FORM, PROFILE_FORM, AVATAR_FORM } from '../actions/types';
+import {
+  USER_FORM,
+  PROFILE_FORM,
+  AVATAR_FORM,
+  RESET_FORM,
+} from '../actions/types';
 
 const { produce } = require('immer');
 
@@ -9,7 +14,7 @@ const initialState = {
   password: '',
   passwordConfirm: '',
   nickname: '',
-  description: '',
+  userDescription: '',
   url: '',
   profileImage: '',
   profileImageType: '',
@@ -26,13 +31,15 @@ export default function profileReducer(prevState = initialState, action) {
         break;
       case PROFILE_FORM:
         draft.nickname = action.payload.nickname;
-        draft.description = action.payload.description;
+        draft.userDescription = action.payload.userDescription;
         draft.url = action.payload.url;
         break;
       case AVATAR_FORM:
         draft.profileImage = action.payload.profileImage;
         draft.profileImageType = action.payload.profileImageType;
         break;
+      case RESET_FORM:
+        return initialState;
       default:
         return prevState;
     }

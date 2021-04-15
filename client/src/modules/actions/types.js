@@ -9,3 +9,4 @@ export const AUTH_USER = 'auth_user';
 export const USER_FORM = 'user_form';
 export const PROFILE_FORM = 'profile_form';
 export const AVATAR_FORM = 'avatar_form';
+export const RESET_FORM = 'reset_form';
