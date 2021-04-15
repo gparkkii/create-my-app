@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { FormBox } from 'styles/form/styles';
 
 const AvatarForm = () => {
+  const HiddenRef = React.useRef(null);
+
   const [Preview, setPreview] = useState(null);
   const [ImageFile, setImageFile] = useState(null);
 
@@ -27,7 +29,13 @@ const AvatarForm = () => {
     <>
       <FormBox>
         <ImageBox>
-          <ShowImage src={Preview} alt="upload" />
+          <ImageContainer
+            onClick={() => {
+              HiddenRef.current.click();
+            }}
+          >
+            <ShowImage src={Preview} alt="upload" />
+          </ImageContainer>
           <label htmlFor="uploadImage">내 이미지</label>
           <HiddenInput
             type="file"
@@ -37,6 +45,7 @@ const AvatarForm = () => {
             onClick={e => {
               e.target.value = null;
             }}
+            ref={HiddenRef}
             capture="user"
             accept="image/png, image/jpg, image/jpeg"
           />
@@ -73,10 +82,16 @@ const HiddenInput = styled.input`
   display: none;
 `;
 
-const ShowImage = styled.img`
+const ImageContainer = styled.div`
   width: 156px;
   height: 156px;
   background-color: #eaeaea;
-  box-shadow: ${({ theme }) => theme.boxShadow};
   border-radius: 100%;
+`;
+
+const ShowImage = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  box-shadow: ${({ theme }) => theme.boxShadow};
 `;
