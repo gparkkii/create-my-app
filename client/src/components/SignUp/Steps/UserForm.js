@@ -1,8 +1,8 @@
+/* eslint-disable no-alert */
 import React, { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import {
   NameError,
-  EmailError,
   PasswordError,
   PasswordConfirmError,
 } from 'library/options/errors';
@@ -13,6 +13,7 @@ import {
   AbsoluteBox,
   AbsoluteButton,
   MarginBox,
+  BorderButton,
 } from 'styles/form/styles';
 import {
   AlertMessage,
@@ -23,12 +24,17 @@ import {
 import IconButton from '@material-ui/core/IconButton';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import { useDispatch } from 'react-redux';
+import { checkUser } from 'modules/actions/user';
 
-const UserForm = () => {
+const UserForm = ({ next }) => {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
     watch,
+    setError,
     formState: { errors },
   } = useForm({
     mode: 'onTouched',
@@ -42,8 +48,19 @@ const UserForm = () => {
     setShowPassword(!ShowPassword);
   };
 
-  const onSubmit = e => {
-    e.preventDefault();
+  const onSubmit = data => {
+    console.log(data);
+    dispatch(checkUser(data.email)).then(response => {
+      console.log(response);
+      if (response.payload.success) {
+        alert('success');
+      } else {
+        setError('email', {
+          type: 'validate',
+          message: response.payload.message,
+        });
+      }
+    });
   };
 
   return (
@@ -91,12 +108,15 @@ const UserForm = () => {
               placeholder="이메일을 입력해주세요"
               className={errors.email ? 'errorInput' : null}
               {...register('email', {
-                required: true,
-                pattern: /^\S+@\S+$/i,
+                required: '이메일을 입력해주세요.',
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                  message: '이메일 형식이 옳바르지 않습니다.',
+                },
               })}
             />
             {errors.email && (
-              <ErrorMessage>{EmailError[errors.email.type]}</ErrorMessage>
+              <ErrorMessage>{errors.email.message}</ErrorMessage>
             )}
           </InputBox>
           <InputBox>
@@ -174,6 +194,7 @@ const UserForm = () => {
             한글 제외 영문(대/소문자), 숫자, 특수문자를 조합하여 8~20자 이내로
             입력해주세요.
           </InputAlert>
+          <BorderButton> 입력완료 </BorderButton>
         </FormBox>
       </MarginBox>
     </>

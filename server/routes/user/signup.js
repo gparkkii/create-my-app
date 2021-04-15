@@ -22,4 +22,22 @@ router.post('/', (req, res) => {
   })
 });
 
+router.post('/checkEmail', (req, res) => {
+  console.log(req.body);
+  User.findOne({ email: req.body.email }, (err, user) => {
+    console.log(user);
+    if(user) return res.json({
+      success: false,
+      message: "이미 가입된 이메일입니다."
+    });
+    else {
+      return res.status(200).json({
+        success: true,
+        message: "사용 가능한 이메일입니다."
+      })
+    }
+  })
+})
+
+
 module.exports = router;

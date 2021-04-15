@@ -8,35 +8,36 @@ import ProfileForm from './Steps/ProfileForm';
 import AvatarForm from './Steps/AvatarForm';
 import CompleteForm from './Steps/CompleteForm';
 
-function getSteps() {
-  return ['기본 정보', '프로필 정보', '내 아바타', '시작하기'];
-}
-
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <UserForm />;
-    case 1:
-      return <ProfileForm />;
-    case 2:
-      return <AvatarForm />;
-    case 3:
-      return <CompleteForm />;
-    default:
-      return '404 Unknown Error';
-  }
-}
-
 function Stepper({ history }) {
-  const steps = getSteps();
-
   const [currentStep, setCurrentStep] = useState(0);
+
   function goForward() {
     setCurrentStep(currentStep + 1);
   }
   function goBack() {
     setCurrentStep(currentStep - 1);
   }
+
+  function getSteps() {
+    return ['기본 정보', '프로필 정보', '내 아바타', '시작하기'];
+  }
+
+  function getStepContent(step) {
+    switch (step) {
+      case 0:
+        return <UserForm next={goForward} />;
+      case 1:
+        return <ProfileForm />;
+      case 2:
+        return <AvatarForm />;
+      case 3:
+        return <CompleteForm />;
+      default:
+        return '404 Unknown Error';
+    }
+  }
+
+  const steps = getSteps();
 
   const isFirst = currentStep === 0;
   const isLast = currentStep === steps.length - 1;
@@ -59,7 +60,7 @@ function Stepper({ history }) {
             이전
           </button>
         )}
-        <button
+        {/* <button
           type="submit"
           onClick={e => {
             e.preventDefault();
@@ -71,7 +72,7 @@ function Stepper({ history }) {
           }}
         >
           {isLast ? '입력완료' : '다음'}
-        </button>
+        </button> */}
       </ColumnBox>
     </Container>
   );
