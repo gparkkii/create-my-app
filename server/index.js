@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const config = require('./config/key');
 const authRouter = require('./routes/auth');
 const uploadRouter = require('./routes/upload');
+const userRouter = require('./routes/user/user');
 const signupRouter = require('./routes/user/signup');
 const loginRouter = require('./routes/user/login');
 const logoutRouter = require('./routes/user/logout');
@@ -33,6 +34,7 @@ app.use(cookieParser());
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
+app.use('/user', userRouter);
 
 //============= API ==============//
 app.use('/auth', authRouter);

@@ -13,7 +13,7 @@ export const darkTheme = {
   borderColor: '1px solid #3c3f43',
   inputFilled: '#444452',
   contentBox: '#34333c',
-  boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.25)',
+  boxShadow: '0 2px 4px 0 rgba(50, 50, 50, 0.25)',
 };
 
 export const theme = {

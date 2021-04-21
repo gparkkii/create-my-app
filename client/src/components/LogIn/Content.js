@@ -21,7 +21,6 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import OAuthLogin from './OAuth/OAuthLogin';
 
 function Content({ history }) {
-  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -30,9 +29,9 @@ function Content({ history }) {
     mode: 'onTouched',
   });
 
+  const dispatch = useDispatch();
   const [RememberId, setRememberId] = useState(false);
-
-  const [ShowPassword, setShowPassword] = React.useState(false);
+  const [ShowPassword, setShowPassword] = useState(false);
 
   const handleVisibility = () => {
     setShowPassword(!ShowPassword);

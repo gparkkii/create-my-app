@@ -10,7 +10,6 @@ import UserForm from './Steps/UserForm';
 import ProfileForm from './Steps/ProfileForm';
 import AvatarForm from './Steps/AvatarForm';
 import CompleteForm from './Steps/CompleteForm';
-import AuthHeader from '../common/AuthHeader';
 
 function Stepper({ history }) {
   const dispatch = useDispatch();
@@ -72,7 +71,6 @@ function Stepper({ history }) {
               onSubmit();
             }}
             type="button"
-            marginTop="24px"
           >
             가입하기
           </BorderButton>
@@ -99,7 +97,7 @@ const Container = styled.div`
   justify-content: start;
   align-items: center;
   width: 32em;
-  max-height: 46em;
+  max-height: 48em;
   height: 100%;
   border-radius: 30px;
   padding: 40px;
@@ -132,8 +130,8 @@ const StepViewer = styled.div`
 
 const ResetButton = styled.button`
   width: 100%;
-  margin-top: 15px;
-  font-size: 14px;
+  margin-top: 12px;
+  font-size: 12px;
   text-align: center;
   text-decoration: underline;
   color: #c1c8f0;

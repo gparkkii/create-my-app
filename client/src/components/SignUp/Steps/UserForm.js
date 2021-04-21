@@ -29,8 +29,6 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 const UserForm = ({ next }) => {
-  const dispatch = useDispatch();
-
   const {
     register,
     handleSubmit,
@@ -41,6 +39,7 @@ const UserForm = ({ next }) => {
     mode: 'onTouched',
   });
 
+  const dispatch = useDispatch();
   const password = useRef();
   password.current = watch('password');
 
@@ -195,7 +194,10 @@ const UserForm = ({ next }) => {
             한글 제외 영문(대/소문자), 숫자, 특수문자를 조합하여 8~20자 이내로
             입력해주세요.
           </InputAlert>
-          <BorderButton type="submit"> 입력완료 </BorderButton>
+          <BorderButton type="submit" marginTop="30px">
+            {' '}
+            입력완료{' '}
+          </BorderButton>
         </FormBox>
       </MarginBox>
     </>

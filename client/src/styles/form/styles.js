@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { media } from '../media_query';
 
 export const MarginBox = styled.div`
@@ -107,6 +107,13 @@ export const FilledInput = styled.input`
     border: 1px solid #4957a5;
     box-shadow: inset 0 0 0 1px #4957a5;
   }
+  ${props =>
+    props.readOnly &&
+    css`
+      color: #aaa;
+      background-color: ${({ theme }) => theme.contentBox};
+      border: ${({ theme }) => theme.borderColor};
+    `}
 `;
 
 export const UnderlinedInput = styled.input`
@@ -176,6 +183,17 @@ export const StyledTextArea = styled.textarea`
     border: 1px solid #4957a5;
     box-shadow: inset 0 0 0 1px #4957a5;
   }
+  ${props =>
+    props.readOnly &&
+    css`
+      height: 48px;
+      line-height: 48px;
+      padding: 0px 20px;
+      border-radius: 30px;
+      color: #aaa;
+      background-color: ${({ theme }) => theme.contentBox};
+      border: ${({ theme }) => theme.borderColor};
+    `}
 `;
 
 export const SocialLogin = styled.div`
@@ -185,7 +203,7 @@ export const SocialLogin = styled.div`
   width: 33.3%;
   height: 48px;
   border-radius: 30px;
-  box-shadow: 0 3px 6px 0 rgba(170, 170, 170, 0.16);
+  box-shadow: ${({ theme }) => theme.boxShadow};
   cursor: pointer;
   color: ${props => props.color || '#757575'};
   background-color: ${props => props.backgroundColor || '#fff'};
@@ -213,8 +231,8 @@ export const HiddenInput = styled.input`
 `;
 
 export const BigAvatar = styled.div`
-  width: 156px;
-  height: 156px;
+  width: 148px;
+  height: 148px;
   background-color: #eaeaea;
   border-radius: 100%;
 `;
