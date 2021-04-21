@@ -34,6 +34,7 @@ const Header = () => {
         )}
         {isAuth && (
           <>
+            <NavLink to="/mypage">마이페이지</NavLink>
             <NavLink to="/">
               <button type="submit" onClick={onClickHandler}>
                 로그아웃

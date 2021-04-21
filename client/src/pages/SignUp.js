@@ -2,15 +2,17 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { FlexContainer } from 'styles/container/styles';
 import Stepper from 'components/SignUp/Stepper';
-import AppLayout from 'components/common/AppLayout';
+import AuthLayout from 'components/common/AuthLayout';
+import AuthHeader from 'components/common/AuthHeader';
 
 const SignUp = () => {
   return (
-    <AppLayout>
+    <AuthLayout>
       <FlexContainer>
+        <AuthHeader />
         <Stepper />
       </FlexContainer>
-    </AppLayout>
+    </AuthLayout>
   );
 };
 

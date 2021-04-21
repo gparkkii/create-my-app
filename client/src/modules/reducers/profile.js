@@ -18,6 +18,7 @@ const initialState = {
   url: '',
   profileImage: '',
   profileImageType: '',
+  hashedEmail: '',
 };
 
 export default function profileReducer(prevState = initialState, action) {
@@ -37,6 +38,7 @@ export default function profileReducer(prevState = initialState, action) {
       case AVATAR_FORM:
         draft.profileImage = action.payload.profileImage;
         draft.profileImageType = action.payload.profileImageType;
+        draft.hashedEmail = action.payload.hashedEmail;
         break;
       case RESET_FORM:
         return initialState;

@@ -1,6 +1,13 @@
 import styled from '@emotion/styled';
 import { media } from '../media_query';
 
+export const WrapContainer = styled.main`
+  min-height: 100%;
+  position: relative;
+  padding-top: 60px;
+  padding-bottom: 80px;
+`;
+
 export const MainContainer = styled.div`
   display: flex;
   margin: 0 auto;

@@ -4,12 +4,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { signupUser } from 'modules/actions/user';
 import { media } from 'styles/media_query';
 import { ColumnBox, BorderButton, FormBox } from 'styles/form/styles';
-import styled from 'styled-components';
 import { resetProfileForm } from 'modules/actions/profile';
+import styled from 'styled-components';
 import UserForm from './Steps/UserForm';
 import ProfileForm from './Steps/ProfileForm';
 import AvatarForm from './Steps/AvatarForm';
 import CompleteForm from './Steps/CompleteForm';
+import AuthHeader from '../common/AuthHeader';
 
 function Stepper({ history }) {
   const dispatch = useDispatch();
@@ -59,10 +60,9 @@ function Stepper({ history }) {
 
   return (
     <Container>
-      <div>
+      <StepViewer>
         Step {currentStep + 1} of {steps.length}
-      </div>
-      {steps[currentStep]}
+      </StepViewer>
       <ColumnBox>{getStepContent(currentStep)}</ColumnBox>
       {isLast && (
         <FormBox>
@@ -72,7 +72,7 @@ function Stepper({ history }) {
               onSubmit();
             }}
             type="button"
-            marginTop="30px"
+            marginTop="24px"
           >
             가입하기
           </BorderButton>
@@ -98,8 +98,9 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  width: 34em;
-  min-height: 48em;
+  width: 32em;
+  max-height: 46em;
+  height: 100%;
   border-radius: 30px;
   padding: 40px;
   background-color: ${({ theme }) => theme.contentBox};
@@ -118,11 +119,15 @@ const Container = styled.div`
     flex-grow: 0;
   }
   & div:nth-child(2) {
-    flex-grow: 2;
+    flex-grow: 1;
   }
   & div:nth-child(3) {
     flex-grow: 0;
   }
+`;
+
+const StepViewer = styled.div`
+  font-size: 14px;
 `;
 
 const ResetButton = styled.button`

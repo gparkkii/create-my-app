@@ -22,6 +22,7 @@ const userSchema = mongoose.Schema({
   },
   profileImage: { type: String },
   profileImageType: { type: String },
+  hashedEmail: { type: String },
   nickname: {
     type: String,
     required: true,

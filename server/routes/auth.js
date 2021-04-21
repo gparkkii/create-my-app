@@ -16,10 +16,10 @@ router.get('/', auth , (req, res) => {
       nickname: req.user.nickname,
       profileImage: req.user.profileImage,
       profileImageType: req.user.profileImageType,
+      hashedEmail: req.user.hashedEmail,
       userDescription: req.user.userDescription,
       url: req.user.url,
     },
-    
   })
 })
 

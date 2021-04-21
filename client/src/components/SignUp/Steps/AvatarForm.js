@@ -60,6 +60,7 @@ const AvatarForm = ({ next }) => {
           addAvatarForm({
             profileImage: BlankUrl,
             profileImageType: CheckedLabel,
+            hashedEmail: createGravatar,
           }),
         );
         next();
