@@ -23,7 +23,38 @@ react-webpack-template에 더 많은 기능들과 스타일을 develop한 M.E.R.
 ```bash
 $> git clone https://github.com/gparkkii/create-my-app.git
 $> npm i
+$> cd client
+$> npm i
 ```
+
+- 서버 연결
+  1. `server/config` 폴더안에 `dev.js` 파일 생성
+  2. 밑의 코드를 복사한 후 `{password}`, `{dbname}` 에 개설한 몽고디비 비밀번호와 db명칭을 입력합니다. 
+  3. `client`의 `webpack.config.js`에도 서버 주소를 연결해줍니다.
+
+```
+$> config/dev.js
+
+module.exports = {
+  mongoURI : "mongodb+srv://user:{password}@boilerplate.7cib8.mongodb.net/{dbname}?retryWrites=true&w=majority"
+  // ------> {password}, {dbname} 입력
+}
+```
+
+```
+$> client/webpack.config.js
+
+devServer: {
+  ...
+  proxy: {
+    '/api': {
+      target: '서버 주소 연결',   // -------> 본인의 서버 주소를 연결해주세요
+    },
+  },
+  ...
+},
+```
+
 
 - 애플리케이션 실행
 
