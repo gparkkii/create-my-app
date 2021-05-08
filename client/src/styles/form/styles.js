@@ -230,30 +230,9 @@ export const HiddenInput = styled.input`
   display: none;
 `;
 
-export const BigAvatar = styled.div`
-  width: 148px;
-  height: 148px;
-  background-color: #eaeaea;
-  border-radius: 100%;
-`;
-
-export const MediumAvatar = styled.div`
-  width: 100px;
-  height: 100px;
-  background-color: #eaeaea;
-  border-radius: 100%;
-`;
-
-export const SmallAvatar = styled.div`
-  width: 60px;
-  height: 60px;
-  background-color: #eaeaea;
-  border-radius: 100%;
-`;
-
-export const XSmallAvatar = styled.div`
-  width: 36px;
-  height: 36px;
+export const Avatar = styled.div`
+  width: ${props => props.width || '148px'};
+  height: ${props => props.width || '148px'};
   background-color: #eaeaea;
   border-radius: 100%;
 `;

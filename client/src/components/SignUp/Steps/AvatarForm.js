@@ -9,7 +9,7 @@ import {
   ColumnBox,
   BlankBox,
   BlankName,
-  BigAvatar,
+  Avatar,
   AvatarImage,
   AvatarLabelBox,
   HiddenInput,
@@ -98,7 +98,7 @@ const AvatarForm = ({ next }) => {
       <FormBox onSubmit={onSubmit}>
         <MarginBox margin="20px 0 0 0" />
         <ColumnBox>
-          <BigAvatar
+          <Avatar
             onClick={() => {
               HiddenRef.current.click();
             }}
@@ -124,7 +124,7 @@ const AvatarForm = ({ next }) => {
             {CheckedLabel === 'upload' && (
               <AvatarImage src={Preview} alt="upload" />
             )}
-          </BigAvatar>
+          </Avatar>
           <HiddenInput
             type="radio"
             id="gravatar"

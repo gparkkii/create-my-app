@@ -43,3 +43,31 @@ export const FlexContainer = styled.div`
     width: calc(100% - 1rem);        
   `}
 `;
+
+export const GridContainer = styled.div`
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s ease;
+  & a {
+    width: 100%;
+    height: 100%;
+  }
+  ${media.desktop`
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    gap: 28px;
+  `}
+  ${media.tablet`
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(2,1fr);
+  `}
+  ${media.mobile`
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: repeat(1,1fr);
+  `}
+`;

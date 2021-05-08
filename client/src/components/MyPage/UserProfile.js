@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useCallback } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
@@ -14,16 +15,12 @@ import {
   StyledTextArea,
   BorderButton,
   ColumnBox,
-  BigAvatar,
-  AvatarImage,
-  BlankBox,
-  BlankName,
   MarginBox,
 } from 'styles/form/styles';
 import { ErrorMessage, InputAlert } from 'styles/typography/styles';
-import { useColorMaker } from 'hooks/useColorMaker';
+import UserAvatar from '../common/UserAvatar';
 
-const EditForm = ({ profileData, createGravatar, readOnly }) => {
+const EditForm = ({ profileData, readOnly }) => {
   const {
     register,
     handleSubmit,
@@ -39,42 +36,26 @@ const EditForm = ({ profileData, createGravatar, readOnly }) => {
     mode: 'onTouched',
   });
 
-  const { _id } = useSelector(state => state.user.profile);
-  const [BlankBg, BlankColor] = useColorMaker(createGravatar);
+  const _id = useSelector(state => state.user.profile?._id);
 
-  const onSubmit = useCallback(data => {
-    axios.post('api/user/update', { _id, data }).then(response => {
-      if (response.data.success) {
-        alert(`${response.data.message}`);
-      } else {
-        alert(`${response.data.message}`);
-      }
-    });
-  }, []);
+  const onSubmit = useCallback(
+    data => {
+      axios.post('api/user/update', { _id, data }).then(response => {
+        if (response.data.success) {
+          alert(`${response.data.message}`);
+        } else {
+          alert(`${response.data.message}`);
+        }
+      });
+    },
+    [_id],
+  );
 
   return (
     <>
       <FormBox onSubmit={handleSubmit(onSubmit)}>
         <ColumnBox>
-          <BigAvatar>
-            {profileData.profileImageType === 'blank' ? (
-              <BlankBox>
-                <AvatarImage
-                  backgroundColor={BlankBg}
-                  src={profileData.profileImage}
-                  alt={`${profileData.name}'s profile`}
-                />
-                <BlankName color={BlankColor}>
-                  {profileData.nickname.substring(0, 2)}
-                </BlankName>
-              </BlankBox>
-            ) : (
-              <AvatarImage
-                src={profileData.profileImage}
-                alt={`${profileData.name}'s profile`}
-              />
-            )}
-          </BigAvatar>
+          <UserAvatar />
         </ColumnBox>
         <MarginBox margin="8px" />
         <InputBox>

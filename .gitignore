@@ -4,8 +4,7 @@
 /build/
 /bin/
 target/
-config/*
-server/config/*
+server/config/dev.js
 
 # Dependencies
 node_modules

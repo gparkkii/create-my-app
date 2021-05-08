@@ -1,45 +1,33 @@
-import React, { useCallback } from 'react';
-import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { logoutUser } from 'modules/actions/user';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { useTheme } from 'context/themeProvider';
 import styled from 'styled-components';
 import ThemeToggle from './ThemeToggle';
+import AuthHeader from './AuthHeader';
 
 const Header = () => {
-  const dispatch = useDispatch();
   const isAuth = useSelector(state => state.user.data.isAuth);
   const [ThemeMode, toggleTheme] = useTheme();
-
-  const onClickHandler = useCallback(() => {
-    dispatch(logoutUser()).then(response => {
-      console.log(response);
-    });
-  }, []);
 
   return (
     <StyledHeader>
       <nav>
-        <NavLink to="/">
+        <Link to="/">
           <h2>👩🏼‍💻</h2>
           <p>gparkkii</p>
-        </NavLink>
+        </Link>
       </nav>
       <nav>
         {!isAuth && (
           <>
-            <NavLink to="/login">로그인</NavLink>
-            <NavLink to="/signup">회원가입</NavLink>
+            <Link to="/login">로그인</Link>
+            <Link to="/signup">회원가입</Link>
           </>
         )}
         {isAuth && (
           <>
-            <NavLink to="/mypage">마이페이지</NavLink>
-            <NavLink to="/">
-              <button type="submit" onClick={onClickHandler}>
-                로그아웃
-              </button>
-            </NavLink>
+            <AuthHeader />
           </>
         )}
         <ThemeToggle toggle={toggleTheme} mode={ThemeMode} />
